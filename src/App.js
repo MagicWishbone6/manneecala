@@ -1,12 +1,15 @@
 import "./App.css";
 import Board from "./components/Board";
-import Navbar from "react-bootstrap/Navbar";
+import NavBar from "./components/NavBar";
+import Player from "./game/Player";
 
 export default function App() {
 	return (
 		<div className="App m-5">
+			<Player order={1} />
 			<Board />
-			<Navbar variant="dark" bg="dark" fixed="bottom" />
+			<Player order={2} />
+			<NavBar />
 		</div>
 	);
 }

@@ -6,22 +6,22 @@ export default function Side() {
 	return (
 		<Row>
 			<Col>
-				<Cup />
+				<Cup className="cupA" />
 			</Col>
 			<Col>
-				<Cup />
+				<Cup className="cupB" />
 			</Col>
 			<Col>
-				<Cup />
+				<Cup className="cupC" />
 			</Col>
 			<Col>
-				<Cup />
+				<Cup className="cupD" />
 			</Col>
 			<Col>
-				<Cup />
+				<Cup className="cupE" />
 			</Col>
 			<Col>
-				<Cup />
+				<Cup className="cupF" />
 			</Col>
 		</Row>
 	);

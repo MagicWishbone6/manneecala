@@ -1,9 +1,17 @@
 import Button from "react-bootstrap/Button";
+import React from 'react';
 
-export default function Cup() {
-	return (
-		<div className="bg-secondary border border-primary" style={{height: '100px'}}>
-			<Button variant="outline-info">Cup</Button>
-		</div>
-	);
+export default class Cup extends React.Component {
+	constructor(props) {
+		super(props)
+		this.state = {value: 0}
+	}
+
+	render() {
+		return (
+			<div className="bg-secondary border border-primary" style={{height: '100px'}}>
+				<Button variant="outline-info">Cup {this.state.value}</Button>
+			</div>
+		)
+	}
 }
