@@ -13,6 +13,7 @@ export default function Board() {
 				</Col>
 				<Col>
 					<Side />
+					<br />
 					<Side />
 				</Col>
 				<Col xl="2">
