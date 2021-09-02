@@ -1,5 +1,6 @@
-import Button from "react-bootstrap/Button";
+import diamond from "../sprites/pinkDiamond25.png";
+import Image from "react-bootstrap/Image";
 
 export default function Bead() {
-	return <Button size="sm" variant="warning"/>;
+	return <Image src={diamond} />;
 }

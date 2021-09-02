@@ -6,22 +6,22 @@ export default function Side({playerNum}) {
 	return (
 		<Row>
 			<Col>
-				<Cup id={`cupA${playerNum}`} />
+				<Cup id={`cupA${playerNum}`} playerNum={playerNum} />
 			</Col>
 			<Col>
-				<Cup id={`cupB${playerNum}`} />
+				<Cup id={`cupB${playerNum}`} playerNum={playerNum} />
 			</Col>
 			<Col>
-				<Cup id={`cupC${playerNum}`} />
+				<Cup id={`cupC${playerNum}`} playerNum={playerNum} />
 			</Col>
 			<Col>
-				<Cup id={`cupD${playerNum}`} />
+				<Cup id={`cupD${playerNum}`} playerNum={playerNum} />
 			</Col>
 			<Col>
-				<Cup id={`cupE${playerNum}`} />
+				<Cup id={`cupE${playerNum}`} playerNum={playerNum} />
 			</Col>
 			<Col>
-				<Cup id={`cupF${playerNum}`} />
+				<Cup id={`cupF${playerNum}`} playerNum={playerNum} />
 			</Col>
 		</Row>
 	);

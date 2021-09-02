@@ -10,7 +10,7 @@ export default class Cup extends React.Component {
 	render() {
 		return (
 			<div className="bg-secondary border border-primary" style={{height: '100px'}}>
-				<Button variant="outline-info">Cup {this.state.value}</Button>
+				<Button variant="outline-info">P{this.props.playerNum} Cup {this.state.value}</Button>
 			</div>
 		)
 	}
