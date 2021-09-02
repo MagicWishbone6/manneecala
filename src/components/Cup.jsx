@@ -4,7 +4,7 @@ import React from 'react';
 export default class Cup extends React.Component {
 	constructor(props) {
 		super(props)
-		this.state = {value: 0}
+		this.state = {value: 4}
 	}
 
 	render() {

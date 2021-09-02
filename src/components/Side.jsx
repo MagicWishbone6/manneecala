@@ -2,26 +2,26 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Cup from "./Cup";
 
-export default function Side() {
+export default function Side({playerNum}) {
 	return (
 		<Row>
 			<Col>
-				<Cup className="cupA" />
+				<Cup id={`cupA${playerNum}`} />
 			</Col>
 			<Col>
-				<Cup className="cupB" />
+				<Cup id={`cupB${playerNum}`} />
 			</Col>
 			<Col>
-				<Cup className="cupC" />
+				<Cup id={`cupC${playerNum}`} />
 			</Col>
 			<Col>
-				<Cup className="cupD" />
+				<Cup id={`cupD${playerNum}`} />
 			</Col>
 			<Col>
-				<Cup className="cupE" />
+				<Cup id={`cupE${playerNum}`} />
 			</Col>
 			<Col>
-				<Cup className="cupF" />
+				<Cup id={`cupF${playerNum}`} />
 			</Col>
 		</Row>
 	);
