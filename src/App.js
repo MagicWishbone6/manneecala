@@ -1,10 +1,12 @@
-import './App.css';
+import "./App.css";
+import Board from "./components/Board";
+import NavBar from "./components/NavBar";
 
-function App() {
-  return (
-    <div className="App">
-    </div>
-  );
+export default function App() {
+	return (
+		<div className="App m-5">
+			<Board />
+			<NavBar />
+		</div>
+	);
 }
-
-export default App;
