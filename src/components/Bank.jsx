@@ -1,23 +1,20 @@
 import Button from "react-bootstrap/Button";
-import Bead from "./Bead";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
+import { displayBeads } from "../utilities/displayBeads";
 
-export default function Bank({playerNum}) {
-	var value = 0
-
-	function displayBeads() {
-		var beads = []
-		for (let i = 0; i < value; i++) {beads.push('b')}
-		return beads.map(bead => <Bead />)
-	}
-
+export default function Bank({ playerNum, value }) {
 	return (
-		<Container className="bg-dark border border-secondary" style={{height: '100%'}}>
+		<Container
+			className="bg-dark border border-secondary"
+			style={{ height: "100%" }}
+		>
 			<Row>
-			<Button variant="outline-primary" id={`bank${playerNum}`}>P{playerNum} Bank {value}</Button>
+				<Button variant="outline-primary" id={`bank${playerNum}`}>
+					P{playerNum} Bank {value}
+				</Button>
 			</Row>
-			<Row>{displayBeads()}</Row>
+			<Row>{displayBeads(value)}</Row>
 		</Container>
 	);
 }
