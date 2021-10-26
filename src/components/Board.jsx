@@ -10,7 +10,7 @@ import getIndexDifference from "../utilities/getIndexDifference";
 
 export default function Board() {
 	const [numBeadsToPass, setNumBeadsToPass] = useState(0);
-	const [playerTurn, setPlayerTurn] = useState(1)
+	const [playerTurn, setPlayerTurn] = useState(2)
 	const [nextCupOrBank, setNextCupOrBank] = useState(null);
 	const [cupAndBankValues, setCupAndBankValues] = useState({
 		cupF1: 4,
@@ -86,6 +86,10 @@ export default function Board() {
 
 	const handleClickCupButton = (event) => {
 		const clickedCupID = "cup" + event.target.id.substr(1, 2);
+		if ((playerTurn === 1 && clickedCupID.indexOf("2") > -1) || (playerTurn === 2 && clickedCupID.indexOf("1") > -1)) {
+			alert(`Player ${playerTurn} can only use cups on Side ${playerTurn}.`)
+			return
+		} 
 		setNumBeadsToPass(cupAndBankValues[clickedCupID]);
 		setCupAndBankValues({ ...cupAndBankValues, [clickedCupID]: 0 });
 		setNextCupOrBank(cupsAndBanks.indexOf(clickedCupID) + 1);
