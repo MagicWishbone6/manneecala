@@ -1,11 +1,14 @@
+import { useEffect } from "react";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 
-export default function Player({ order, score }) {
+export default function Player({ order, score, turn }) {
     const name = order === 1 ? "Computer" : "You";
 
+	const fontColor = turn ? "pink" : "gray"
+
 	return (
-		<Row>
+		<Row id={`player${order}Row`} style={{color: fontColor}}>
 			<Col md="auto">
 				<h3>Player {order}</h3>
 			</Col>

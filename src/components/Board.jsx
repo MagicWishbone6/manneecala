@@ -11,6 +11,10 @@ import getIndexDifference from "../utilities/getIndexDifference";
 export default function Board() {
 	const [numBeadsToPass, setNumBeadsToPass] = useState(0);
 	const [nextCupOrBank, setNextCupOrBank] = useState(null);
+	const [playerTurn, setPlayerTurn] = useState({
+		player1: true,
+		player2: false
+	})
 	const [cupAndBankValues, setCupAndBankValues] = useState({
 		cupF1: 4,
 		cupE1: 4,
@@ -44,24 +48,22 @@ export default function Board() {
 		"cupD2",
 		"cupE2",
 		"cupF2",
-		"bank2",
+		"bank2"
 	];
-
-	const passBead = () => {
-		let nextCupValue = cupAndBankValues[cupsAndBanks[nextCupOrBank]] + 1;
-		setCupAndBankValues({
-			...cupAndBankValues,
-			[cupsAndBanks[nextCupOrBank]]: nextCupValue,
-		});
-		setNumBeadsToPass(numBeadsToPass - 1);
-		setNextCupOrBank(nextCupOrBank + getIndexDifference(nextCupOrBank, cupsAndBanks));
-	};
 
 	useEffect(() => {
 		let timeout;
 		if (numBeadsToPass > 0) {
 			timeout = setTimeout(() => {
-				passBead();
+				let nextCupValue = cupAndBankValues[cupsAndBanks[nextCupOrBank]] + 1;
+				setCupAndBankValues({
+					...cupAndBankValues,
+					[cupsAndBanks[nextCupOrBank]]: nextCupValue,
+				});
+				setNumBeadsToPass(numBeadsToPass - 1);
+				setNextCupOrBank(
+					nextCupOrBank + getIndexDifference(nextCupOrBank, cupsAndBanks)
+				);
 			}, 500);
 		}
 
@@ -75,11 +77,26 @@ export default function Board() {
 		setNumBeadsToPass(cupAndBankValues[clickedCupID]);
 		setCupAndBankValues({ ...cupAndBankValues, [clickedCupID]: 0 });
 		setNextCupOrBank(cupsAndBanks.indexOf(clickedCupID) + 1);
+		while (numBeadsToPass > 0) {
+			let timeout = setTimeout(() => {}, 1000);
+			clearTimeout(timeout);
+		}
+		if (numBeadsToPass === 0 && playerTurn.player1 === true) {
+			setPlayerTurn({ 
+				player1: false,
+				player2: true
+			})
+		} else if (numBeadsToPass === 0 && playerTurn.player1 === false) {
+			setPlayerTurn({ 
+				player1: true,
+				player2: false
+			})
+		}
 	};
 
 	return (
 		<Container fluid>
-			<Player order={1} score={cupAndBankValues.bank1} />
+			<Player order={1} score={cupAndBankValues.bank1} turn={playerTurn.player1} />
 			<Row>
 				<Col xl="2">
 					<Bank playerNum={1} value={cupAndBankValues.bank1} />
@@ -98,10 +115,14 @@ export default function Board() {
 					/>
 				</Col>
 				<Col xl="2">
-					<Bank playerNum={2} value={cupAndBankValues.bank2} />
+					<Bank
+						playerNum={2}
+						value={cupAndBankValues.bank2}
+						turn={playerTurn}
+					/>
 				</Col>
 			</Row>
-			<Player order={2} score={cupAndBankValues.bank2} />
+			<Player order={2} score={cupAndBankValues.bank2} turn={playerTurn.player2} />
 			<NavBar />
 		</Container>
 	);
