@@ -5,10 +5,11 @@ import Col from "react-bootstrap/Col";
 import Bank from "./Bank";
 import Row from "react-bootstrap/Row";
 import Player from "../game/Player";
+import NavBar from "./NavBar";
 
 export default function Board() {
-	const [numBeadsToPass, setNumBeadsToPass] = useState(0)
-	const [nextCupOrBank, setNextCupOrBank] = useState(null)
+	const [numBeadsToPass, setNumBeadsToPass] = useState(0);
+	const [nextCupOrBank, setNextCupOrBank] = useState(null);
 	const [cupAndBankValues, setCupAndBankValues] = useState({
 		cupF1: 4,
 		cupE1: 4,
@@ -42,43 +43,46 @@ export default function Board() {
 		"cupD2",
 		"cupE2",
 		"cupF2",
-		"bank2"
-	]
+		"bank2",
+	];
 
 	const getIndexDifference = () => {
-		let difference = 1
-		if (nextCupOrBank === (cupsAndBanks.length - 1)) {
-			difference = -(cupsAndBanks.length - 1)
+		let difference = 1;
+		if (nextCupOrBank === cupsAndBanks.length - 1) {
+			difference = -(cupsAndBanks.length - 1);
 		}
-		return difference
-	}
+		return difference;
+	};
 
 	const passBead = () => {
-		let nextCupValue = cupAndBankValues[cupsAndBanks[nextCupOrBank]] + 1
-		setCupAndBankValues({ ...cupAndBankValues, [cupsAndBanks[nextCupOrBank]]: nextCupValue})
-		setNumBeadsToPass(numBeadsToPass - 1)
-		setNextCupOrBank(nextCupOrBank + getIndexDifference())
-	}
+		let nextCupValue = cupAndBankValues[cupsAndBanks[nextCupOrBank]] + 1;
+		setCupAndBankValues({
+			...cupAndBankValues,
+			[cupsAndBanks[nextCupOrBank]]: nextCupValue,
+		});
+		setNumBeadsToPass(numBeadsToPass - 1);
+		setNextCupOrBank(nextCupOrBank + getIndexDifference());
+	};
 
 	useEffect(() => {
-		let timeout
+		let timeout;
 		if (numBeadsToPass > 0) {
 			timeout = setTimeout(() => {
-				passBead()
-			}, 500)
+				passBead();
+			}, 500);
 		}
 
 		return () => {
-			clearTimeout(timeout)
-		}
-	}) 
-	
+			clearTimeout(timeout);
+		};
+	});
+
 	const handleClickCupButton = (event) => {
-		const clickedCupID = "cup" + event.target.id.substr(1,2)
-		setNumBeadsToPass(cupAndBankValues[clickedCupID])
-		setCupAndBankValues({ ...cupAndBankValues, [clickedCupID]: 0})
-		setNextCupOrBank(cupsAndBanks.indexOf(clickedCupID) + 1)
-	}
+		const clickedCupID = "cup" + event.target.id.substr(1, 2);
+		setNumBeadsToPass(cupAndBankValues[clickedCupID]);
+		setCupAndBankValues({ ...cupAndBankValues, [clickedCupID]: 0 });
+		setNextCupOrBank(cupsAndBanks.indexOf(clickedCupID) + 1);
+	};
 
 	return (
 		<Container fluid>
@@ -88,15 +92,24 @@ export default function Board() {
 					<Bank playerNum={1} value={cupAndBankValues.bank1} />
 				</Col>
 				<Col>
-					<Side playerNum={1} onClickCupButton={handleClickCupButton} cupValues={cupAndBankValues}/>
+					<Side
+						playerNum={1}
+						onClickCupButton={handleClickCupButton}
+						cupValues={cupAndBankValues}
+					/>
 					<br />
-					<Side playerNum={2} onClickCupButton={handleClickCupButton} cupValues={cupAndBankValues}/>
+					<Side
+						playerNum={2}
+						onClickCupButton={handleClickCupButton}
+						cupValues={cupAndBankValues}
+					/>
 				</Col>
 				<Col xl="2">
 					<Bank playerNum={2} value={cupAndBankValues.bank2} />
 				</Col>
 			</Row>
 			<Player order={2} score={cupAndBankValues.bank2} />
+			<NavBar />
 		</Container>
 	);
 }
