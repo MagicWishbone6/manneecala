@@ -1,10 +1,8 @@
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 
-export default function Player({ order }) {
-	var score = 0;
-
-	const name = order === 1 ? "Computer" : "You";
+export default function Player({ order, score }) {
+    const name = order === 1 ? "Computer" : "You";
 
 	return (
 		<Row>

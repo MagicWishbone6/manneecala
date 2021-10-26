@@ -82,7 +82,7 @@ export default function Board() {
 
 	return (
 		<Container fluid>
-			<Player order={1} />
+			<Player order={1} score={cupAndBankValues.bank1} />
 			<Row>
 				<Col xl="2">
 					<Bank playerNum={1} value={cupAndBankValues.bank1} />
@@ -96,7 +96,7 @@ export default function Board() {
 					<Bank playerNum={2} value={cupAndBankValues.bank2} />
 				</Col>
 			</Row>
-			<Player order={2} />
+			<Player order={2} score={cupAndBankValues.bank2} />
 		</Container>
 	);
 }
