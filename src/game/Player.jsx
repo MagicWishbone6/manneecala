@@ -1,10 +1,10 @@
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 
-export default function Player({ order, score, turn }) {
+export default function Player({ order, score, turn}) {
     const name = order === 1 ? "Computer" : "You";
 
-	const fontColor = turn ? "pink" : "gray"
+	const fontColor = (turn === order) ? "pink" : "gray"
 
 	return (
 		<Row id={`player${order}Row`} style={{color: fontColor}}>
