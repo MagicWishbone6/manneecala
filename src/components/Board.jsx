@@ -6,6 +6,7 @@ import Bank from "./Bank";
 import Row from "react-bootstrap/Row";
 import Player from "../game/Player";
 import NavBar from "./NavBar";
+import getIndexDifference from "../utilities/getIndexDifference";
 
 export default function Board() {
 	const [numBeadsToPass, setNumBeadsToPass] = useState(0);
@@ -46,14 +47,6 @@ export default function Board() {
 		"bank2",
 	];
 
-	const getIndexDifference = () => {
-		let difference = 1;
-		if (nextCupOrBank === cupsAndBanks.length - 1) {
-			difference = -(cupsAndBanks.length - 1);
-		}
-		return difference;
-	};
-
 	const passBead = () => {
 		let nextCupValue = cupAndBankValues[cupsAndBanks[nextCupOrBank]] + 1;
 		setCupAndBankValues({
@@ -61,7 +54,7 @@ export default function Board() {
 			[cupsAndBanks[nextCupOrBank]]: nextCupValue,
 		});
 		setNumBeadsToPass(numBeadsToPass - 1);
-		setNextCupOrBank(nextCupOrBank + getIndexDifference());
+		setNextCupOrBank(nextCupOrBank + getIndexDifference(nextCupOrBank, cupsAndBanks));
 	};
 
 	useEffect(() => {
