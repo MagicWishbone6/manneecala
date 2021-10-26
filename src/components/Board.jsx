@@ -77,10 +77,6 @@ export default function Board() {
 		setNumBeadsToPass(cupAndBankValues[clickedCupID]);
 		setCupAndBankValues({ ...cupAndBankValues, [clickedCupID]: 0 });
 		setNextCupOrBank(cupsAndBanks.indexOf(clickedCupID) + 1);
-		while (numBeadsToPass > 0) {
-			let timeout = setTimeout(() => {}, 1000);
-			clearTimeout(timeout);
-		}
 		if (numBeadsToPass === 0 && playerTurn.player1 === true) {
 			setPlayerTurn({ 
 				player1: false,
