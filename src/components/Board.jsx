@@ -68,9 +68,9 @@ export default function Board() {
 						nextCupOrBank + getIndexDifference(nextCupOrBank, cupsAndBanks);
 					if (
 						(cupsAndBanks[newNextIndex] === "bank1" &&
-							playerTurn.player1 === false) ||
+							playerTurn === 2) ||
 						(cupsAndBanks[newNextIndex] === "bank2" &&
-							playerTurn.player2 === false)
+							playerTurn === 1)
 					) {
 						newNextIndex += 1;
 					}
