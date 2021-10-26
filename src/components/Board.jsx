@@ -45,23 +45,26 @@ export default function Board() {
 		"bank2"
 	]
 
-	const setNextIndex = () => {
-
+	const getIndexDifference = () => {
+		let difference = 1
+		if (nextCupOrBank === (cupsAndBanks.length - 1)) {
+			difference = -(cupsAndBanks.length - 1)
+		}
+		return difference
 	}
 
 	const passBead = () => {
-		
-		setNextCupOrBank()
+		let nextCupValue = cupAndBankValues[cupsAndBanks[nextCupOrBank]] + 1
+		setCupAndBankValues({ ...cupAndBankValues, [cupsAndBanks[nextCupOrBank]]: nextCupValue})
+		setNumBeadsToPass(numBeadsToPass - 1)
+		setNextCupOrBank(nextCupOrBank + getIndexDifference())
 	}
 
 	useEffect(() => {
 		let timeout
 		if (numBeadsToPass > 0) {
 			timeout = setTimeout(() => {
-				let nextCupValue = cupAndBankValues[cupsAndBanks[nextCupOrBank]] + 1
-				setCupAndBankValues({ ...cupAndBankValues, [cupsAndBanks[nextCupOrBank]]: nextCupValue})
-				setNumBeadsToPass(numBeadsToPass - 1)
-				setNextCupOrBank(nextCupOrBank + 1)
+				passBead()
 			}, 500)
 		}
 
