@@ -7,6 +7,7 @@ import Row from "react-bootstrap/Row";
 import Player from "../game/Player";
 import NavBar from "./NavBar";
 import getIndexDifference from "../utilities/getIndexDifference";
+import getSideValue from "../utilities/getSideValue";
 
 export default function Board() {
 	const [numBeadsToPass, setNumBeadsToPass] = useState(0);
@@ -57,9 +58,9 @@ export default function Board() {
 					...cupAndBankValues,
 					[cupsAndBanks[nextCupOrBank]]: nextCupValue,
 				});
-				if (numBeadsToPass - 1 === 0 && playerTurn === 1) {
+				if (numBeadsToPass - 1 === 0 && playerTurn === 1 && getSideValue(2, cupAndBankValues) > 0) {
 					setPlayerTurn(2)
-				} else if (numBeadsToPass - 1 === 0 && playerTurn === 2) {
+				} else if (numBeadsToPass - 1 === 0 && playerTurn === 2 && getSideValue(1, cupAndBankValues) > 0) {
 					setPlayerTurn(1)
 				}
 				setNumBeadsToPass(numBeadsToPass - 1);
