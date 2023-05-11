@@ -5,5 +5,5 @@ export function displayBeads(value) {
 		for (let i = 0; i < value; i++) {
 			beads.push("b");
 		}
-		return beads.map((bead) => <Bead />);
+		return beads.map((bead, i) => <Bead key={i}/>);
 }

@@ -5,7 +5,6 @@ import Col from "react-bootstrap/Col";
 import Bank from "./Bank";
 import Row from "react-bootstrap/Row";
 import Player from "../game/Player";
-import NavBar from "./NavBar";
 import getIndexDifference from "../utilities/getIndexDifference";
 import getSideValue from "../utilities/getSideValue";
 
@@ -30,24 +29,9 @@ export default function Board() {
 		bank2: 0,
 	});
 
-	// cups and banks are listed here in counter-clockwise order, the direction of gameplay,
+	// cups and banks are listed in counter-clockwise order, the direction of gameplay,
 	// starting with cupF1 and going all the way around to bank2
-	const cupsAndBanks = [
-		"cupF1",
-		"cupE1",
-		"cupD1",
-		"cupC1",
-		"cupB1",
-		"cupA1",
-		"bank1",
-		"cupA2",
-		"cupB2",
-		"cupC2",
-		"cupD2",
-		"cupE2",
-		"cupF2",
-		"bank2",
-	];
+	const cupsAndBanks = Object.keys(cupAndBankValues)
 
 	useEffect(() => {
 		let timeout;
@@ -58,9 +42,9 @@ export default function Board() {
 					...cupAndBankValues,
 					[cupsAndBanks[nextCupOrBank]]: nextCupValue,
 				});
-				if (numBeadsToPass - 1 === 0 && playerTurn === 1 && getSideValue(2, cupAndBankValues) > 0) {
+				if (numBeadsToPass === 1 && playerTurn === 1 && getSideValue(2, cupAndBankValues) > 0) {
 					setPlayerTurn(2)
-				} else if (numBeadsToPass - 1 === 0 && playerTurn === 2 && getSideValue(1, cupAndBankValues) > 0) {
+				} else if (numBeadsToPass === 1 && playerTurn === 2 && getSideValue(1, cupAndBankValues) > 0) {
 					setPlayerTurn(1)
 				}
 				setNumBeadsToPass(numBeadsToPass - 1);
@@ -73,7 +57,7 @@ export default function Board() {
 						(cupsAndBanks[newNextIndex] === "bank2" &&
 							playerTurn === 1)
 					) {
-						newNextIndex += 1;
+						newNextIndex++;
 					}
 					return newNextIndex
 				});
@@ -124,7 +108,6 @@ export default function Board() {
 				</Col>
 			</Row>
 			<Player order={2} score={cupAndBankValues.bank2} turn={playerTurn} />
-			<NavBar />
 		</Container>
 	);
 }
