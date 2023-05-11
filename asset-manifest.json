@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/maneecala/static/css/main.f1ea16b8.css",
+    "main.js": "/maneecala/static/js/main.05459f7f.js",
+    "static/js/787.5f102d68.chunk.js": "/maneecala/static/js/787.5f102d68.chunk.js",
+    "index.html": "/maneecala/index.html",
+    "main.f1ea16b8.css.map": "/maneecala/static/css/main.f1ea16b8.css.map",
+    "main.05459f7f.js.map": "/maneecala/static/js/main.05459f7f.js.map",
+    "787.5f102d68.chunk.js.map": "/maneecala/static/js/787.5f102d68.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f1ea16b8.css",
+    "static/js/main.05459f7f.js"
+  ]
+}
