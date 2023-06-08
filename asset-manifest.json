@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/manneecala/static/css/main.f1ea16b8.css",
-    "main.js": "/manneecala/static/js/main.9bc4c5f2.js",
+    "main.js": "/manneecala/static/js/main.a8a581eb.js",
     "static/js/787.5f102d68.chunk.js": "/manneecala/static/js/787.5f102d68.chunk.js",
     "index.html": "/manneecala/index.html",
     "main.f1ea16b8.css.map": "/manneecala/static/css/main.f1ea16b8.css.map",
-    "main.9bc4c5f2.js.map": "/manneecala/static/js/main.9bc4c5f2.js.map",
+    "main.a8a581eb.js.map": "/manneecala/static/js/main.a8a581eb.js.map",
     "787.5f102d68.chunk.js.map": "/manneecala/static/js/787.5f102d68.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f1ea16b8.css",
-    "static/js/main.9bc4c5f2.js"
+    "static/js/main.a8a581eb.js"
   ]
 }
