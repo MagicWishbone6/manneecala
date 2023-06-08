@@ -1,7 +1,7 @@
 {
   "name": "mancala",
   "version": "0.1.0",
-  "homepage": "https://magicwishbone6.github.io/maneecala",
+  "homepage": "https://magicwishbone6.github.io/manneecala",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
